@@ -18,33 +18,7 @@ DQDB is a **dual-bus topology** used in **MANs** for high-speed data communicati
 
 It consists of **two unidirectional buses (fibers)** running in **opposite directions**:
 
-```mermaid
-flowchart TB
-    %% Top Bus (Left → Right)
-    subgraph TopBus [Top Bus: Left → Right]
-        direction LR
-        T_A(A)
-        T_B(B)
-        T_C(C)
-        T_D(D)
-        T_A --> T_B --> T_C --> T_D
-    end
-
-    %% Bottom Bus (Right → Left)
-    subgraph BottomBus [Bottom Bus: Right → Left]
-        direction RL
-        B_D(D)
-        B_C(C)
-        B_B(B)
-        B_A(A)
-        B_D --> B_C --> B_B --> B_A
-    end
-
-    %% Connections between Top and Bottom at each station
-    T_A --- B_A
-    T_B --- B_B
-    T_C --- B_C
-    T_D --- B_D
+![DQDB Diagram](dqdb_diagram.png)
 ```
 
 Each device connects to **both buses**:
