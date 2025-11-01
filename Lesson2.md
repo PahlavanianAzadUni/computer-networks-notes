@@ -18,7 +18,7 @@ DQDB is a **dual-bus topology** used in **MANs** for high-speed data communicati
 
 It consists of **two unidirectional buses (fibers)** running in **opposite directions**:
 
-![DQDB Diagram](dqdb_diagram.png)
+![DQDB Diagram](dqdb_diagram.jpg)
 ```
 
 Each device connects to **both buses**:
