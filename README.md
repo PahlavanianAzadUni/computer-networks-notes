@@ -1,8 +1,22 @@
-# 📘 Computer Networks — Switching Lessons
+# 📘 Computer Networks
+> Author: Mohammad
+> 
+> Format: Progressive Summary Notebook (Markdown-based)
+> 
+> Purpose: To build a clear, visual, and modular understanding of Computer Networks — one “Lesson” at a time.
+>  
 
-Welcome to the **Switching Module** of the Computer Networks repository.  
-This section covers all major switching techniques — from traditional circuit-based systems to advanced packet-switched methods used in modern networks.
+---
 
+## 📈 Visual Guide - 
+ASCII and Mermaid diagrams will be embedded directly in each Markdown file.
+--- 
+
+## 🧠 How to Use This Notebook - 
+Start from the top and work down — or jump freely between lessons.
+---
+## ⚙️ Repository Tips - 
+Optionally, use **Git Ingest** or similar tools to let AI recall these notes contextually. 
 ---
 
 ## 📚 Lesson Index
@@ -18,3 +32,8 @@ This section covers all major switching techniques — from traditional circuit-
 ## ⚜️ Maintained by
 
 **Pahlavanian Mohammad**
+
+--- > ⚜️ “Build knowledge like a network — one connection at a time.” ⚜️
+
+
+--- > ⚜️ “Build knowledge like a network — one connection at a time.” ⚜️
