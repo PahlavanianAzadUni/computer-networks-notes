@@ -35,5 +35,3 @@ Optionally, use **Git Ingest** or similar tools to let AI recall these notes con
 
 --- > ⚜️ “Build knowledge like a network — one connection at a time.” ⚜️
 
-
---- > ⚜️ “Build knowledge like a network — one connection at a time.” ⚜️
