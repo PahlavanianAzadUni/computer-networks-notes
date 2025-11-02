@@ -1,27 +1,20 @@
-# 🌐 Computer Networks Notes – 
+# 📘 Computer Networks — Switching Lessons
 
-> Author: Mohammad  
-> Course: Computer Networks  
-> Format: Progressive Summary Notebook (Markdown-based)  
-> Purpose: To build a clear, visual, and modular understanding of Computer Networks — one “island” at a time.
+Welcome to the **Switching Module** of the Computer Networks repository.  
+This section covers all major switching techniques — from traditional circuit-based systems to advanced packet-switched methods used in modern networks.
 
 ---
 
-## 📈 Visual Guide 
-- ASCII and Mermaid diagrams will be embedded directly in each Markdown file.  
-- GitHub renders these diagrams automatically for better visual learning.
+## 📚 Lesson Index
+
+| # | Lesson Title | Description | Link |
+|---|---------------|-------------|------|
+| 1 | **Circuit Switching** | Understanding physical circuit switching, analog vs. digital, subswitch hierarchy, and setup/busy line problems. | [View Lesson 1](./Lesson1.md) |
+| 2 | **Message Switching** | Explore message forwarding, node processing time, ACK/NACK system, and store-and-forward mechanism. | [View Lesson 2](./Lesson2.md) |
+| 3 | **Cell (Packet) Switching** | Learn how messages are divided into packets (cells), with virtual circuits and datagram methods explained. | [View Lesson 3](./Lesson3.md) |
 
 ---
 
-## 🧠 How to Use This Notebook
-- Start from the top and work down — or jump freely between lessons.  
-- When new lessons are added, this README will be updated automatically with new links.
+## ⚜️ Maintained by
 
----
-
-## ⚙️ Repository Tips
-- Optionally, use **Git Ingest** or similar tools to let AI recall these notes contextually.
-
----
-
-> ⚜️ “Build knowledge like a network — one connection at a time.” ⚜️
+**Pahlavanian Mohammad**
