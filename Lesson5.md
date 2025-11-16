@@ -95,7 +95,7 @@ This is important for error detection & correction in digital comms.
 
 # 🔦 **4. Fiber Optic Cable**
 
-The professor clarified there are **3 layers**, not 4.
+The professor clarified there are **3 layers**
 
 ## 🧱 4.1 Structure
 
@@ -176,7 +176,7 @@ Where:
 
 # 📡 **6. Electromagnetic Spectrum**
 
-Below is the fully corrected and expanded version based on your notes + the picture.
+![The_ectromagnetic_spectrum](The_ectromagnetic_spectrum.png)
 
 ## 🌈 EM Spectrum Regions (in order)
 
