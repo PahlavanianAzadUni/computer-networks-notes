@@ -247,6 +247,3 @@ From Sessions 3 + 4:
 
 ---
 
-# ✅ This version is optimized for readability, memorization, and clarity.
-
-Whenever you're ready, send Session 5 content and I’ll integrate it in the same polished style.
