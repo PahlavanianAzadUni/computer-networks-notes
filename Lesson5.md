@@ -116,8 +116,9 @@ Light travels inside the core and tries to escape, but…
 
 ```mermaid
 graph TD
-    A[Outer Jacket] --> B[Cladding<br/>(Lower Refraction)]
-    B --> C[Core<br/>(Higher Refraction)]
+    A["Outer Jacket"]
+    A --> B["Cladding (Lower Refraction)"]
+    B --> C["Core (Higher Refraction)"]
 ```
 
 ### 🌈 ASCII Reflection Diagram
