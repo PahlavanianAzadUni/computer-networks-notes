@@ -1,7 +1,5 @@
 # ✨ **Lesson 5 – Transmission Media, Waves, Wireless Propagation**
 
-### (Fully polished, merged with Lesson 4, 100% complete, clear, and beautifully formatted)
-
 ---
 
 # 🎯 **0. Overview of Lesson 5**
