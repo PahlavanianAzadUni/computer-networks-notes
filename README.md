@@ -27,7 +27,9 @@ Navigate freely and explore each lesson visually and interactively through the G
 
 ---
 
+
 ## 📚 Lesson Index
+
 | # | Lesson Title | Description | Link |
 |---|---------------|-------------|------|
 | 1 | **Circuit Switching** | Understand physical circuit switching, analog vs. digital signals, subswitch hierarchy, and setup/busy line problems. | [View Lesson 1](./Lesson1.md) |
@@ -38,6 +40,7 @@ Navigate freely and explore each lesson visually and interactively through the G
 | 6 | **Data Link Layer (Layer 2)** | Dive into framing, MAC addressing, and link-layer protocols. | [View Lesson 6](./Lesson6.md) |
 | 7A | **Error Control (Deep Dive), Hamming Code, CRC** | Detailed coverage of error detection and correction methods, including practical examples. | [View Lesson 7A](./Lesson7A.md) |
 | 7B | **Flow Control Full Breakdown** | Complete analysis of flow control mechanisms and strategies in data communication. | [View Lesson 7B](./Lesson7B.md) |
+
 
 > ⚠️ *Tip:* Lessons are updated regularly. Bookmark the [GitHub Pages site](https://pahlavanianazaduni.github.io/computer-networks-notes/) for the latest content.
 
