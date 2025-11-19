@@ -1,4 +1,4 @@
-# 📘 **Session 4 — Switching Review, Virtual Circuits, Datagrams, and Signals**
+# 📘 **Lesson 4 — Switching Review, Virtual Circuits, Datagrams, and Signals**
 
 ---
 
