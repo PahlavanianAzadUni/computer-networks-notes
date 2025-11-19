@@ -1,4 +1,4 @@
-# Lesson 7 — Error Control (Deep Dive), Hamming Code, CRC
+# **Lesson 7A – Error Control (Deep Dive), Hamming Code, CRC**
 
 ## 1. Error Control Recap
 
