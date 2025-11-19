@@ -2,7 +2,6 @@
 
 ## Summary
 
-(Refined and reorganized as requested.)
 In Lesson 6, we officially moved **up** from the Physical Layer (Layer 1), which covered the first five lessons, into the **Data Link Layer (Layer 2)**. The professor illustrated the transition using a multi‑LAN diagram containing computers → switches → routers, and explained how message units grow in complexity as we move up the OSI model.
 
 ---
@@ -16,6 +15,8 @@ In Lesson 6, we officially moved **up** from the Physical Layer (Layer 1), which
 
 These concepts were mentioned briefly by the professor and belong naturally in the transition between L1 and L2 rather than in the error‑control section.
 The professor drew a network composed of:
+
+![alt text](serial_connection.png)
 
 * **Computers connected to switches** → representing the **Physical Layer**.
 * **Switches connected to routers** → representing the **Data Link Layer**.
