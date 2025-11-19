@@ -1,4 +1,4 @@
-# Lesson 7A — Error Control (Deep Dive), Hamming Code, CRC
+# Lesson 7 — Error Control (Deep Dive), Hamming Code, CRC
 
 ## 1. Error Control Recap
 
@@ -188,25 +188,25 @@ Full worked arithmetic for these parity XORs and a sample error/correction are a
 
 ---
 
-## 5. CRC (Cyclic Redundancy Check) — expanded and simplified
+## 5. CRC (Cyclic Redundancy Check) — Expanded and Simplified
 
 CRC is *extremely* important in practice. It treats bit sequences as polynomials over the finite field GF(2) and performs polynomial division (modulo 2). The remainder of that division is the CRC value appended to the data.
 
 ### What is GF(2)?
 
-- GF(2) stands for **Galois Field with 2 elements** — the simplest finite field.
-- Elements are `0` and `1`.
-- **Addition in GF(2)** = XOR (so `1+1 = 0`).
-- **Multiplication in GF(2)** = AND (so `1*1 = 1`, everything else `0`).
+* GF(2) stands for **Galois Field with 2 elements** — the simplest finite field.
+* Elements are `0` and `1`.
+* **Addition in GF(2)** = XOR (so `1 + 1 = 0`).
+* **Multiplication in GF(2)** = AND (so `1 * 1 = 1`, everything else `0`).
 
 When we write polynomials over GF(2), coefficients are 0 or 1 only, and subtraction is the same as addition (XOR).
 
-Examples of polynomials (binary ↔ polynomial):
+**Examples of polynomials (binary ↔ polynomial):**
 
-- `1011` → polynomial `x^3 + x + 1` (because coefficients at positions 3,1,0 are 1).
-- `101` → polynomial `x^2 + 1`.
+* `1011` → polynomial `x^3 + x + 1` (coefficients at positions 3, 1, 0 are 1)
+* `101` → polynomial `x^2 + 1`
 
-### CRC procedure (step‑by‑step, plain words)
+### CRC Procedure (Step‑by‑Step, Plain Words)
 
 1. **Pick a generator polynomial** `G(x)` (represented in bits). Let its degree be `k`.
 2. **Append k zeros** to your data bitstring.
@@ -214,70 +214,60 @@ Examples of polynomials (binary ↔ polynomial):
 4. The **remainder** (k bits) is the CRC value. Append that remainder to the original data (replacing the k zeros) and transmit.
 5. **Receiver** divides the received codeword by the same `G(x)`; if remainder ≠ 0 → error detected.
 
-> Note: CRCs are designed so that typical channel error patterns (single bit errors, double bit errors, burst errors up to certain lengths) are reliably detected by appropriate generator polynomials.
+> Note: CRCs are designed so that typical channel error patterns (single-bit errors, double-bit errors, burst errors up to certain lengths) are reliably detected by appropriate generator polynomials.
 
-### What makes a good generator polynomial?
+### What Makes a Good Generator Polynomial?
 
-- Preferably **not factorable** by small polynomials (irreducible / primitive polynomials are useful for maximal-length detection properties).
-- Certain polynomials are standardized because they detect common error patterns:
-  - `x+1` (`11`) detects single bit errors.
-  - `x^2 + 1` (`101`) catches many short bursts.
-  - `x^3 + x + 1` (`1011`) and `x^4 + x + 1` (`10011`) are common.
-  - Ethernet CRC‑32 uses a specific 32‑degree polynomial chosen for very strong detection of burst errors.
+* Preferably **not factorable** by small polynomials (irreducible / primitive polynomials are useful for maximal-length detection properties).
+* Certain polynomials are standardized because they detect common error patterns:
 
-### Why mod‑2 division looks like XOR
+  * `x + 1` (`11`) detects single-bit errors.
+  * `x^2 + 1` (`101`) catches many short bursts.
+  * `x^3 + x + 1` (`1011`) and `x^4 + x + 1` (`10011`) are common.
+  * Ethernet CRC‑32 uses a specific 32-degree polynomial chosen for very strong detection of burst errors.
 
-- In polynomial arithmetic over GF(2), subtraction is the same as addition because coefficients are modulo 2. So the usual long division reduces to a sequence of XORs of overlapping bits.
+### Why Mod‑2 Division Looks Like XOR
 
-### Worked CRC example (your classroom example)
+* In polynomial arithmetic over GF(2), subtraction is the same as addition because coefficients are modulo 2. So the usual long division reduces to a sequence of XORs of overlapping bits.
+
+### Worked CRC Example (Classroom Example)
 
 **Given:**
 
-- Data = `10011011` (8 bits)
-- Generator = `x^2 + 1` → polynomial bits `101` (degree k = 2)
+* Data = `10011011` (8 bits)
+* Generator = `x^2 + 1` → polynomial bits `101` (degree k = 2)
 
-**Step 1 — append k zeros:**
+**Step 1 — Append k Zeros:**
 
-- `10011011` → `1001101100` (appended two zeros)
+* `10011011` → `1001101100` (appended two zeros)
 
-**Step 2 — perform mod‑2 division by **``**:** (division shown as XOR steps)
+**Step 2 — Perform Mod‑2 Division:**
 
-The remainder (computed via bitwise XOR long division) = `10`.
+* Division performed via XOR steps yields remainder = `10`.
 
-**Step 3 — transmitted codeword = original data + remainder**
+**Step 3 — Transmitted Codeword = Original Data + Remainder**
 
-- Sent = `10011011 10` → `1001101110`.
+* Sent = `10011011 10` → `1001101110`
 
-**Receiver check — your example where receiver gets a different pattern**
+**Receiver Check**
 
-- Suppose the receiver receives `11011011 10` (first data bit flipped from `1`→`1`? — your provided 8‑bit receive example was `11011011` but remember the transmitted included CRC bits; typically the receiver checks the full received codeword). If the received full codeword divides by `101` with nonzero remainder, an error is detected.
+* Suppose the receiver receives `1101101110` (first data bit flipped). Dividing the received codeword by `101` with non-zero remainder → **error detected**.
 
-In the classroom example where the receiver got `11011011` (data only), if the appended CRC is also received then dividing the full received codeword by the generator yields remainder `01` (non‑zero) → **error detected**.
+### Another CRC Example (Worked)
 
-## **### Another CRC example (worked)**
+**Data:** `1101011011`
 
-\
+**Generator:** `10011` (polynomial `x^4 + x + 1`, degree 4)
 
+* Append 4 zeros → `11010110110000`
+* Divide by `10011` using mod‑2 long division → remainder `r` (4 bits)
+* Transmit `1101011011 r`
+* Receiver divides by `10011`; if remainder ≠ 0 → error detected
 
-**\*\*Data:\*\*** \`1101011011\` (random example) **\*\*Generator:\*\*** \`10011\` (polynomial \`x^4 + x + 1\`, degree 4)
+### Full Long-Division (Mod‑2) for `11010110110000 ÷ 10011`
 
-\
+(Full long-division steps follow — worked for the example.)
 
-
-\- Append 4 zeros → \`11010110110000\`.
-
-\- Divide by \`10011\` using mod‑2 long division → remainder \`r\` (4 bits).
-
-\- Transmit \`1101011011 r\`.
-
-\- Receiver divides by \`10011\`; if remainder ≠ 0 → detected.
-
-\
-
-
-(Full long‑division steps follow — worked for the example.)
-
-### Full long‑division (mod‑2) for `11010110110000 ÷ 10011`
 
 We divide the 14‑bit dividend `11010110110000` by the 5‑bit divisor `10011` (generator). Each XOR step is applied when the current leftmost bit is `1`.
 
