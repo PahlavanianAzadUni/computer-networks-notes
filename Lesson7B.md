@@ -1,4 +1,4 @@
-# Lesson 7 — Part B
+# Lesson 7B – Flow Control Full Breakdown
 
 ## Automatic Repeat Request (ARQ) Protocols — Full Lesson Notes
 
