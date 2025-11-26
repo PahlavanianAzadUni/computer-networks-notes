@@ -82,8 +82,6 @@ Coax is used for:
 
 # 💥 **3. Burst Noise**
 
-A new concept introduced in Lesson 5.
-
 ⚡ **Burst Noise** = when ***N consecutive bits*** in a signal are corrupted.
 
 * Not just one bit flipping
@@ -97,7 +95,9 @@ This is important for error detection & correction in digital comms.
 
 The professor clarified there are **3 layers**
 
-## 🧱 4.1 Structure
+## 🧱 4.1 Anatomy
+
+![Opticfiber_Anatomy](Opticfiber_Anatomy.png)
 
 1. **Outer Jacket** — thick, opaque, protects against environment
 2. **Cladding** — transparent layer, *lower* refractive index
@@ -114,22 +114,7 @@ Light travels inside the core and tries to escape, but…
 
 ➡️ Light “bounces” through the fiber like this:
 
-```mermaid
-graph TD
-    A["Outer Jacket"]
-    A --> B["Cladding (Lower Refraction)"]
-    B --> C["Core (Higher Refraction)"]
-```
-
-### 🌈 ASCII Reflection Diagram
-
-```
- Core (High n)
- ┌──────────────────────────┐
- │ \  \  \  \  \  \ (light bouncing)│
- └──────────────────────────┘
- Cladding (Low n)
-```
+![Optic_fiber_diagram](Optic_fiber_diagram.png)
 
 ## 🔊 4.3 Noise in Fiber
 
