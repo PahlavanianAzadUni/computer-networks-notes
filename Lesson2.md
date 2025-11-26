@@ -34,7 +34,7 @@ At each end of the buses:
 
 ### ⚙️ How It Works
 
-1. **Empty Cells Flow Continuously**
+1. **Empty Cells Flow Continuously**: 
    Empty cells are generated and move along the bus. These are like *data containers waiting to be filled*.
 
 2. **Station A (first station)** has **priority** access to the top bus since it receives empty cells first.
