@@ -93,7 +93,7 @@ Examples:
 * Two unshielded cables disturbing each other
 * A radio tower saturating nearby frequencies
 
-Session 4 explicitly taught us that:
+
 
 > **Noise is natural. Interference is external and often predictable.**
 
@@ -107,11 +107,7 @@ Here is a quick comparison chart:
 
 ---
 
-# 🔌 **Media Types (with Visual Diagrams)**
-
-Your professor reviewed this in Session 3 but expanded heavily in Session 4. Here are improved diagrams.
-
----
+# 🔌 **Media Types**
 
 ## 1️⃣ **Twisted Pair Cable (UTP / STP)**
 
