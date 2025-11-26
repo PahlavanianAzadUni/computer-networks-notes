@@ -12,7 +12,7 @@ This session started by reinforcing the core ideas from **Session 3**, especiall
 
 A **signal** is the physical form of data as it travels through a medium.
 
-In Session 3 you wrote:
+In Session 3 it was said that:
 
 > **“Signal is the representation of data during transfer.”**
 
