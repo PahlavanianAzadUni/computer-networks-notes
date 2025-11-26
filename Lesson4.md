@@ -34,7 +34,7 @@ Signals can exist as:
 
 ---
 
-## 🔁 **Reviewing the Communication Process (Improved, With Diagram)**
+## 🔁 **Reviewing the Communication Process**
 
 Session 3 introduced the classic communication chain. Session 4 reiterated it with more examples.
 
@@ -44,7 +44,7 @@ Session 3 introduced the classic communication chain. Session 4 reiterated it wi
 └──────────┘      └──────────┘      └──────────┘      └────────────┘      └──────────┘
 ```
 
-### 📝 Key reminders (from Session 3 + 4)
+### 📝 Key reminders (from Session 3)
 
 * The **sender** has *data*.
 * The **encoder** turns data → signal.
@@ -58,13 +58,7 @@ Session 4 emphasized:
 
 ---
 
-# ⚠️ **Noise vs. پارازیت (Correct English Term)**
-
-You asked specifically about **پارازیت** and how it differs from **noise**.
-
-Here is the correct terminology:
-
-## 🟨 **Noise (نویز)**
+## 🟨 **Noise **
 
 Unwanted *random* disturbance that naturally occurs in any communication channel.
 
@@ -78,17 +72,11 @@ Examples:
 * Random amplitude spikes
 * Unpredictable interference
 
-💡 **English term:** *Noise*
-
 ---
 
-## 🟥 **پارازیت ≠ Noise**
+## ⭐ **Interference (تداخل)**
 
-پارازیت refers to deliberate, external, intentional or semi‑intentional interference.
-
-The precise networking term for **پارازیت** is:
-
-# ⭐ **Interference (تداخل)**
+Interference refers to deliberate, external, intentional or semi‑intentional disturbance.
 
 This includes:
 
@@ -98,7 +86,6 @@ This includes:
 
 These are **not random** — they come from identifiable external sources.
 
-💡 **English term:** *Interference*
 
 Examples:
 
@@ -106,17 +93,17 @@ Examples:
 * Two unshielded cables disturbing each other
 * A radio tower saturating nearby frequencies
 
-Session 4 explicitly taught:
+Session 4 explicitly taught us that:
 
-> **Noise is natural. Interference (پارازیت) is external and often predictable.**
+> **Noise is natural. Interference is external and often predictable.**
 
 Here is a quick comparison chart:
 
-| Concept      | Persian  | English Term | Behavior                    | Example                    |
-| ------------ | -------- | ------------ | --------------------------- | -------------------------- |
-| 🔈 Noise     | نویز     | Noise        | Random, always present      | Thermal noise in copper    |
-| 📡 پارازیت   | پارازیت  | Interference | External, identifiable      | Microwave disturbing Wi‑Fi |
-| 🔗 Crosstalk | کراس‌تاک | Crosstalk    | One wire leaks into another | UTP pairs interfering      |
+| Concept           |  English Term | Behavior                    | Example                    |
+| ----------------- | ------------ | --------------------------- | -------------------------- |
+| 🔈 Noise          |  Noise        | Random, always present      | Thermal noise in copper    |
+| 📡 Interference   | Interference | External, identifiable      | Microwave disturbing Wi‑Fi |
+| 🔗 Crosstalk      |  Crosstalk    | One wire leaks into another | UTP pairs interfering      |
 
 ---
 
