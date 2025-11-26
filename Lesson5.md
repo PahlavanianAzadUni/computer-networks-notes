@@ -33,7 +33,7 @@ This is called **induction cancellation**.
 ## 🌟 1.2 Complete Explanation
 
 * Current in any conductor produces a magnetic field.
-* Changing magnetic fields induce voltages in nearby wires (this is called **inductive coupling** – YES, “induction” *was* the correct term).
+* Changing magnetic fields induce voltages in nearby wires (this is called **inductive coupling**).
 * By twisting the wires, each wire experiences equal exposure to external fields.
 * Because each twist alternates which wire is closer to noise sources, interference cancels out.
 
@@ -52,7 +52,9 @@ This is called **induction cancellation**.
 
 # 📡 **2. Coaxial Cable**
 
-## 🧩 2.1 What she said
+## 🧩 2.1 Anatomy
+
+![coaixal_cable](coaixal_cable.jpg)
 
 * Copper core inside
 * Surrounded by an insulating dielectric
