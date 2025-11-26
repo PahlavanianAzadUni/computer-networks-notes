@@ -54,7 +54,7 @@ This is called **induction cancellation**.
 
 ## 🧩 2.1 Anatomy
 
-![coaixal_cable](coaixal_cable.ppg)
+![coaixal_cable](coaixal_cable.png)
 
 * Copper core inside
 * Surrounded by an insulating dielectric
