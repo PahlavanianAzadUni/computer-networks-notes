@@ -4,7 +4,7 @@
 
 # 🔄 **Part 1 — Deep Review (Building upon what was said in Session 3)**
 
-This session started by reinforcing the core ideas from **Session 3**, especially the *flow of communication*, *components*, and *signal behavior*. The following review is rewritten so that there will be  **no need to jump back to Session 3**.
+This session started by reinforcing the core ideas from **Session 3**, especially the *flow of communication*, *components*, and *signal behavior*. 
 
 ---
 
@@ -178,8 +178,6 @@ Here is a quick comparison chart:
 
 Because twisting creates opposing electromagnetic fields that **cancel each other**, reducing **crosstalk**.
 
-Emoji version:
-
 * 🔄 Twist → 🔇 Less interference → 🚀 Better signal
 
 ---
@@ -196,11 +194,10 @@ Because it uses **light**, not electricity.
 
 ## ⭐ What Affects Signal Quality?
 
-From Sessions 3 + 4:
 
 * Distance 📏
 * Interference 📡
-* Attenuation 📉
+* Attenuation 📉(: the reduction of the amplitude of a signal, electric current, or other oscillation.)
 * Noise 🔈
 * Cable quality 🔌
 * Environment 🌧️⚡
@@ -209,15 +206,10 @@ From Sessions 3 + 4:
 
 # 🎯 **Summary + What You Should Remember**
 
-### From Session 3 (integrated here):
-
 * Signals represent data
 * Channel has encoder → medium → decoder
 * Both analog and digital signals exist
-
-### From Session 4 (expanded here):
-
-* Strong distinction between **noise** and **interference (پارازیت)**
+* There is a strong distinction between **noise** and **interference**
 * Different physical media shape different types of signals
 * Cable structure affects susceptibility to interference
 * Fiber uses light and avoids electrical problems entirely
