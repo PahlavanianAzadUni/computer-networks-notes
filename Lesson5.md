@@ -128,7 +128,6 @@ Fiber is immune to electrical noise.
 
 # 🌊 **5. What is a Wave?**
 
-She defined a wave as:
 ➡️ **Oscillation of a charged particle**
 
 The movement of this oscillation creates EM waves.
@@ -144,6 +143,18 @@ Where:
 * **A** = amplitude (height)
 * **f** = frequency (Hz)
 * **φ** = phase (shift)
+
+And:
+
+```
+c = f · λ
+```
+
+Where:
+
+* **c**= Wave speed, measured in meters per second (m/s).  
+* **f**= Frequency, the number of wave cycles per second, measured in hertz (Hz).  
+* **λ**= Wavelength, the distance between two consecutive points on a wave (like crests), measured in meters (m).  
 
 ## 📏 5.2 Relationship Between λ, f, and c
 
