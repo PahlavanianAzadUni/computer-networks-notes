@@ -11,21 +11,19 @@ Lesson 5 builds on Lesson 4 by going much deeper into:
 * How fiber optic cables guide light
 * Burst noise
 * Waves, wave formulas, and electromagnetic spectrum
-* Wireless propagation methods
+* Wireless propagation methods(: refers to the transmission of electromagnetic signals through various media)
 * Wireless networks and signal attenuation
-
-This version includes **everything the professor said**, corrected and expanded for full clarity + emojis + diagrams.
 
 ---
 
 # 🧵 **1. Twisted Pair (UTP / STP)**
 
-## 🔵 1.1 What the professor drew
+## 🔵 1.1 The Anatomy
 
-She drew **two wires**:
+![UTP_STP_diagram](UTP_STP_diagram.jpg)
 
-* Blue wire = carrying the actual signal ➜ current produces a **magnetic field**
-* Red wire = intertwined with the blue wire ➜ carries an opposite current
+* Pink wire = carrying the actual signal ➜ current produces a **magnetic field**
+* Gray wire = intertwined with the pink wire ➜ carries an opposite current
 
 When wires twist around each other, they form:
 ➡️ **Equal & opposite magnetic fields** → **cancel each other** → **reduced induced noise**
