@@ -123,15 +123,13 @@ Here is a quick comparison chart:
         ╱  ╲ ╱  ╲ ╱  ╲ ╱  ╲   ← twisted copper pairs
 ```
 
-✨ Notes:
-
 * Cheap, flexible
-* Sensitive to **interference** (پارازیت)
+* Sensitive to **interference** 
 * Uses **RJ‑45** connector
 
 ---
 
-## 2️⃣ **Coaxial Cable (کواکسیال)**
+## 2️⃣ **Coaxial Cable**
 
 ```
        Coaxial Cable Layers
@@ -147,15 +145,13 @@ Here is a quick comparison chart:
       └──────────────────────────────┘
 ```
 
-✨ Notes:
-
 * Very resistant to interference
 * Common in early Ethernet and cable TV
 * Expensive compared to UTP
 
 ---
 
-## 3️⃣ **Fiber Optic Cable (فیبر نوری)**
+## 3️⃣ **Fiber Optic Cable**
 
 ```
          Fiber Optic Structure
@@ -170,15 +166,13 @@ Here is a quick comparison chart:
         └─────────────────────────────┘
 ```
 
-✨ Notes:
-
 * Immune to noise and interference
 * Very high bandwidth
 * Light signals, not electricity
 
 ---
 
-# 🔬 **Session 4 Additional Clarifications**
+# 🔬 **Food for Thought**
 
 ## ⭐ Why Do We Twist the Wires in UTP?
 
