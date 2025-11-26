@@ -58,7 +58,7 @@ Session 4 emphasized:
 
 ---
 
-## 🟨 **Noise **
+## 🟨 **Noise**
 
 Unwanted *random* disturbance that naturally occurs in any communication channel.
 
@@ -68,13 +68,13 @@ Unwanted *random* disturbance that naturally occurs in any communication channel
 
 Examples:
 
-* Thermal noise in copper 🟫
+* Thermal noise in copper 
 * Random amplitude spikes
 * Unpredictable interference
 
 ---
 
-## ⭐ **Interference (تداخل)**
+## ⭐ **Interference**
 
 Interference refers to deliberate, external, intentional or semi‑intentional disturbance.
 
@@ -89,7 +89,7 @@ These are **not random** — they come from identifiable external sources.
 
 Examples:
 
-* A microwave interfering with Wi‑Fi 🍲📡
+* A microwave interfering with Wi‑Fi 
 * Two unshielded cables disturbing each other
 * A radio tower saturating nearby frequencies
 
