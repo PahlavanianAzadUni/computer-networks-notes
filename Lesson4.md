@@ -2,9 +2,9 @@
 
 ---
 
-# 🔄 **Part 1 — Deep Review (Sessions 3 + 4 Combined)**
+# 🔄 **Part 1 — Deep Review (Building upon what was said in Session 3)**
 
-The professor dedicated this session to reinforcing the core ideas from **Session 3**, especially the *flow of communication*, *components*, and *signal behavior*. The following review is rewritten so that you **do not need to jump back to Session 3**.
+This session started by reinforcing the core ideas from **Session 3**, especially the *flow of communication*, *components*, and *signal behavior*. The following review is rewritten so that there will be  **no need to jump back to Session 3**.
 
 ---
 
