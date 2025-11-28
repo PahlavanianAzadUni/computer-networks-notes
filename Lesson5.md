@@ -245,7 +245,7 @@ The main ones are:
 
 * Signal goes to satellite and back down
 
-![All_propagations_in_one.png](All_propagations_in_one.png.jng)
+![All_propagations_in_one](All_propagations_in_one.png)
 
 ---
 
