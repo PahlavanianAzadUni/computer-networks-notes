@@ -232,7 +232,7 @@ The main ones are:
 * Follows curvature of Earth
 * Good for long-wave radio
 
-![Ground_wave_propagation](Ground_wave_propagation.jng)
+![Ground_wave_propagation](Ground_wave_propagation.jpg)
 
 ## ☁️ 7.2 Sky Wave Propagation
 
