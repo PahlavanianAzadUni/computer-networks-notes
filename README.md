@@ -1,6 +1,6 @@
 # 📘 Computer Networks
 
-> **Author:** Mohammad  
+> **Author:** **Pahlavanian Mohammad**  
 > **Format:** Progressive Summary Notebook (Markdown-based)  
 > **Purpose:** To build a clear, visual, and modular understanding of *Computer Networks* — one “Lesson” at a time.  
 > **Website:** [Explore the Lessons Online](https://pahlavanianazaduni.github.io/computer-networks-notes/)
