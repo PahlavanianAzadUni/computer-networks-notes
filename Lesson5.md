@@ -225,42 +225,33 @@ Where:
 
 # 🛰️ **7. Wireless Propagation Methods**
 
-The professor gave 3 main ones.
+The main ones are:
 
 ## 🌍 7.1 Ground Wave Propagation
 
 * Follows curvature of Earth
 * Good for long-wave radio
 
-```mermaid
-graph LR
-    A[Tx Antenna] --> B((Ground Wave)) --> C[Rx Antenna]
-```
+![Ground_wave_propagation](Ground_wave_propagation.jng)
 
 ## ☁️ 7.2 Sky Wave Propagation
 
 * Signal bounces off the **ionosphere**
 * Used by shortwave radios
 
-```mermaid
-graph LR
-    A[Tx] --> B((Ionosphere)) --> C[Rx]
-```
+![Sky_wave_propagation](Sky_wave_propagation.png)
 
 ## 🛰️ 7.3 Satellite / Line-of-Sight
 
 * Signal goes to satellite and back down
 
-```mermaid
-graph LR
-    A[Tx] --> S((Satellite)) --> C[Rx]
-```
+![All_propagations_in_one.png](All_propagations_in_one.png.jng)
 
 ---
 
 # 📶 **8. Wireless Networks**
 
-Two types:
+There are two types:
 
 ## 🏢 8.1 Infrastructure-Based Networks
 
@@ -271,12 +262,8 @@ Two types:
 
 Amplitude decreases with distance:
 
-```
-A1  ~~~~~~
-A2   ~~~~~
-A3    ~~~~
-A4     ~~~
-```
+![Signal_Attenuation_Diagram](Signal_Attenuation_Diagram.png)
+
 
 Why? Because energy spreads out and is absorbed.
 
@@ -292,15 +279,10 @@ Boosters repeat and strengthen the signal.
 
 # 🏁 **FINAL SUMMARY**
 
-Everything you gave from the professor has been included, corrected, expanded, diagrammed, and polished.
-
 Lesson 4 foundations → Lesson 5 deep explanations:
 
 * ✔ Twisting = magnetic cancellation
 * ✔ Coax = shield-induced cancellation
 * ✔ Fiber = refractive index + total internal reflection
-* ✔ Burst noise
-* ✔ Wave equations
-* ✔ EM spectrum ranges (fully corrected)
-* ✔ Wireless propagation (3 types)
-* ✔ Infrastructure vs Ad-hoc + attenuation
+* ✔ Wireless propagation (has 3 types)
+* ✔ Wireless Networks (Infrastructure vs Ad-hoc)
