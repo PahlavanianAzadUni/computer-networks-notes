@@ -62,7 +62,7 @@ Block parity organizes bits into a 2‑D grid (rows × columns). We compute a pa
 - If **multiple bits** flip, block parity usually *detects* them (nonzero row/column parities) but cannot always correct them.
 - **Exception (undetected pattern):** A perfect 2×2 square (four bits arranged as a square) flips two bits in two rows and two bits in two columns — each affected row/column parity flips twice (cancels out) → **no change** in parities → **undetected**.
 
-### Concrete numeric example (worked)
+### Concrete numeric example 
 
 Take the 4 rows below (each row has 8 bits):
 
@@ -89,11 +89,11 @@ Big P = XOR(all row parities XOR all column parities) = 0
 So the parity bits appended look like this (right/bottom):
 
 ```
-... | 0
-... | 0
-... | 1
-... | 0
-----
+            ... | 0
+            ... | 0
+            ... | 1
+            ... | 0
+---------------------
 0 0 0 0 1 0 0 0 | 0
 ```
 
