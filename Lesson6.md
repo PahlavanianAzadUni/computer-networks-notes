@@ -190,19 +190,6 @@ Switches are originally **flat devices**, meaning:
 
 Over time, switches build a **MAC Address Table** and become smarter.
 
-### VLANs (Very Brief Intro)
-
-VLAN = **Virtual LAN**
-A way to logically separate a single physical switch into multiple LANs.
-
-* Ports in VLAN 10 cannot see ports in VLAN 20.
-* Creates segmentation, better security, reduced broadcast domains.
-
-### Inter-VLAN (Also Brief)
-
-Routers or Layer 3 switches allow communication **between VLANs**.
-This is the opposite of VLAN isolation.
-
 ---
 
 ## Lesson Summary
@@ -211,5 +198,3 @@ This is the opposite of VLAN isolation.
 * We learned how **framing** creates boundaries using character stuffing, bit stuffing, and other methods.
 * We introduced **error detection and correction**, which will be expanded in Lesson 7.
 * We saw how switches behave and how VLANs logically segment a LAN.
-
-This completes the structured notes for **Lesson 6**.
