@@ -8,13 +8,10 @@ In Lesson 6, we officially moved **up** from the Physical Layer (Layer 1), which
 
 ## Part A — Transition From Layer 1 to Layer 2
 
-### VLANs and Inter-VLAN Routing (Placed here as requested)
+### A quick look at: VLANs and Inter-VLAN Routing
 
 * **VLAN (Virtual LAN):** Logically divides one physical switch into multiple isolated LANs.
 * **Inter-VLAN Routing:** Allows communication **between** VLANs using a router or Layer 3 switch.
-
-These concepts were mentioned briefly by the professor and belong naturally in the transition between L1 and L2 rather than in the error‑control section.
-The professor drew a network composed of:
 
 ![alt text](serial_connection.png)
 
@@ -22,7 +19,7 @@ The professor drew a network composed of:
 * **Switches connected to routers** → representing the **Data Link Layer**.
 * **Routers connected to each other** → representing the **Network Layer**.
 
-She highlighted the following conceptual hierarchy:
+The following conceptual hierarchy exists:
 
 | OSI Layer           | Device Example                       | Data Unit Name        |
 | ------------------- | ------------------------------------ | --------------------- |
@@ -30,7 +27,7 @@ She highlighted the following conceptual hierarchy:
 | Layer 2 – Data Link | **Switches**                         | **Frame**             |
 | Layer 3 – Network   | **Routers**                          | **Packet**            |
 
-### 📌 Concept Callout — Increasing Data Abstraction
+### 📌 Increasing Data Abstraction
 
 As we move **upward** in the OSI model:
 
@@ -46,7 +43,7 @@ This is why a *cell* becomes a *frame*, which later becomes a *packet*.
 
 Layer 2 is responsible for **node‑to‑node delivery**. It ensures that the physical layer’s raw bits are grouped, structured, and reliable enough for the network layer.
 
-### ### ⭐ Key Device: Switches
+### ⭐ Key Device: Switches
 
 Switches operate using **store-and-forward switching**:
 
