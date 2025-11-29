@@ -58,8 +58,6 @@ This behavior contrasts with routers (Layer 3), which make forwarding decisions 
 
 ## Responsibilities of Layer 2
 
-The professor introduced the main Layer 2 functions, starting with **Framing**.
-
 # 1. Framing
 
 ### 📘 Message → Cells (Framing Breakdown Diagram)
@@ -91,7 +89,7 @@ To do that, each frame contains:
 * The payload
 * Possibly a trailer (error detection)
 
-### 📌 Concept Callout — Layer Responsibilities
+### 📌 Layer Responsibilities
 
 Each layer checks the layer **below** it and prepares data for the layer **above** it.
 
@@ -109,11 +107,11 @@ Example:
 
 ## Frame Boundary Detection
 
-The professor explained that the receiver must know:
+The receiver must know:
 
 > “These bits belong to the frame; these other bits do not.”
 
-She gave the “**beep before and after**” analogy — meaning the sender marks boundaries.
+We where given the “**beep before and after**” analogy — meaning the sender marks boundaries.
 
 One way to achieve this is **Character Stuffing**.
 
@@ -179,9 +177,7 @@ Layer 2 provides:
 
 * Hamming codes
 
-(📌 *Note: Full error‑control mechanisms such as parity, checksum, CRC, and Hamming will be discussed in **Lesson 7**. Reed–Solomon was removed because it is not part of the course content.*)
-
-The professor noted that further error‑control topics continue in Lesson 7..
+(📌 *Note: Full error‑control mechanisms such as parity, checksum, CRC, and Hamming will be discussed in **Lesson 7**.*)
 
 ---
 
