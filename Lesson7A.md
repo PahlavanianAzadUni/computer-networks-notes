@@ -156,7 +156,7 @@ A visual review of the code structure:
 3. The binary value of the syndrome gives the **index** of the erroneous bit (0 means no error).
 4. Flip that bit to correct.
 
-### Example 1 — Encode & decode `010011011` (your classroom example)
+### Example 1 — Encode & decode `010011011` 
 
 - Data (m) = `010011011` (9 bits). Find `r` such that 2^r >= 9 + r + 1 → r = 4 (since 2^4 = 16 ≥ 14).
 - Total length n = 9 + 4 = 13 bits. Parity at positions 1,2,4,8.
@@ -176,8 +176,6 @@ A visual review of the code structure:
 
 - Suppose bit at position 5 flips during transmission. Receiver recomputes parity checks → syndrome = 5. Receiver flips bit at index 5, retrieving original code. (This is the core Hamming correction mechanism.)
 
-Full worked arithmetic for these parity XORs and a sample error/correction are available in the canvas (I included the step calculations).
-
 ### Example 2 — Small example `1011` (m=4)
 
 - Choose `r`: for m=4, r=3 satisfies 2^3=8 ≥ 4+3+1=8, so r=3.
@@ -193,7 +191,7 @@ Full worked arithmetic for these parity XORs and a sample error/correction are a
 
 ---
 
-## 5. CRC (Cyclic Redundancy Check) — Expanded and Simplified
+## 5. CRC (Cyclic Redundancy Check) —
 
 CRC is *extremely* important in practice. It treats bit sequences as polynomials over the finite field GF(2) and performs polynomial division (modulo 2). The remainder of that division is the CRC value appended to the data.
 
