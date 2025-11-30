@@ -134,8 +134,12 @@ Choose smallest `r` such that:
 ```
 2^r >= m + r + 1
 ```
-
+For example if we have data of 15 bits to send, m=15 there for we need to find a power for 2 (r) that suits the formula above. first we solve the right hand side of the inequality. 15+r+1=16+r. By checking the different powers of 2 we conclude that 5 is the best choice for r; there for 32 >= 20; meaning we need 5 parity bits for 15 bits of data.
 This ensures that the `r` parity bits can represent all possible single‑bit error positions plus the "no error" state.
+
+A visual review of the code structure:
+
+![hamming_code](hamming_code.png)
 
 ### Encoding procedure (even parity, step‑by‑step)
 
