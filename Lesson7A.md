@@ -191,7 +191,7 @@ A visual review of the code structure:
 
 ---
 
-## 5. CRC (Cyclic Redundancy Check) —
+## 5. Check your notes on the homescreen CRC (Cyclic Redundancy Check) —
 
 CRC is *extremely* important in practice. It treats bit sequences as polynomials over the finite field GF(2) and performs polynomial division (modulo 2). The remainder of that division is the CRC value appended to the data.
 
