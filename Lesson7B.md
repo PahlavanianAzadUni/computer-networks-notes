@@ -64,11 +64,11 @@ sequenceDiagram
 ### 📊 Timing Table for Stop-and-Wait
 | Step | Approx. Time | Description |
 |------|--------------|-------------|
-| 1 | 0 ms | Sender transmits Frame C1 📤 |
-| 2 | 5 ms | C1 travels through channel (Propagation Delay) ⏳ |
-| 3 | 10 ms | Receiver gets C1 and sends ACK for C1 ✔️ |
-| 4 | 15 ms | ACK returns to Sender ⏪ |
-| 5 | 20 ms | Sender sends next frame C2 🔁 | ARQ
+| 1 | 0 ms | 📤 Sender transmits Frame C1 |
+| 2 | 5 ms | ⏳ C1 travels through channel (Propagation Delay) |
+| 3 | 10 ms | ✔️ Receiver gets C1 and sends ACK for C1 |
+| 4 | 15 ms | ⏪ ACK returns to Sender |
+| 5 | 20 ms | 🔁 Sender sends next frame C2 | 
 
 ### 🔑 Important Notes
 - Sender transmits **one frame at a time**.
