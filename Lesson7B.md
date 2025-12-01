@@ -1,14 +1,26 @@
 # Lesson 7B – Flow Control Full Breakdown
 
-## 📝In **Part B**, we shift our focus to **flow control**, exploring what it is, why it matters, and how real systems use it.
+📝In **Part B**, we shift our focus to **flow control**, exploring what it is, why it matters, and how real systems use it.
+Below are the four major ARQ (Automatic Repeat reQuest) protocols used for error control in data communication, followed by the Sliding Window mechanism that powers Go-Back-N and Selective Repeat.
+
 ---
 
 # 1. Stop-and-Wait
 
-### 📘 Detailed Explanation
-Stop-and-Wait ARQ is the simplest form of flow and error control. In this method, the sender sends **one frame at a time** and then *waits* for an acknowledgment (ACK) before sending the next one. This ensures reliability because the sender always knows whether the receiver successfully got the frame. However, it’s slow because the medium stays idle while waiting for ACKs. If the sender doesn’t receive an ACK within a timeout period, it **retransmits** the same frame. This prevents data loss but reduces efficiency on long-distance or high-latency networks 🌍.
+**Idea:** Send one frame at a time and wait for an acknowledgment before sending the next.
 
-Stop-and-Wait ARQ is the simplest form of flow and error control. In this protocol, the sender transmits **a single frame at a time** and then halts transmission until it receives an acknowledgement (ACK) from the receiver. This mechanism ensures that the sender does not overwhelm a slow receiver since it waits for feedback before proceeding. However, the downside is that the channel remains idle during this waiting time, making the protocol inefficient on high-latency networks. If the sender does not receive an ACK within a specified timeout period, it assumes the frame is lost and retransmits it. This guarantees reliability but sacrifices efficiency 🚦.
+**How it Works:**
+- Sender transmits a single frame.
+- Waits for an ACK from the receiver.
+- If no ACK arrives within the timeout, the sender retransmits the same frame.
+
+**Pros:**
+- Very simple to implement.
+- Reliable delivery.
+
+**Cons:**
+- Channel remains idle while waiting for ACK.
+- Very inefficient for long-distance or high-latency links.
 
 ### **Mermaid Diagram**
 ```mermaid
@@ -58,7 +70,7 @@ sequenceDiagram
 | 4 | 15 ms | ACK returns to Sender ⏪ |
 | 5 | 20 ms | Sender sends next frame C2 🔁 | ARQ
 
-### **Concept Summary**
+### 🔑 Important Notes
 - Sender transmits **one frame at a time**.
 - Waits for **ACK** before sending the next one.
 - If ACK is lost or delayed, sender **retransmits after timeout**.
@@ -68,10 +80,22 @@ sequenceDiagram
 
 # 2. Go-Back-N
 
-### 📘 Detailed Explanation
-Go-Back-N improves upon Stop-and-Wait by allowing the sender to transmit **multiple frames in a row** without waiting for ACKs, up to the size of the *sender window*. Frames are labeled with sequence numbers, and the receiver only accepts them **in order**. If a frame is lost or corrupted, the receiver rejects it (implicitly by silence or NACK), and the sender must **go back** and retransmit that frame *and all frames after it*. This ensures order but wastes bandwidth when errors occur 🌐.
+**Idea:** Transmit multiple frames using a window, but if an error occurs, resend the erroneous frame and all frames after it.
 
-Go-Back-N improves efficiency by allowing the sender to transmit **multiple frames before receiving ACKs**, up to a value called the **window size (N)**. Frames are numbered sequentially, and the receiver only accepts them in order. If a frame is lost or corrupted, the receiver discards that frame and all subsequent ones—even if they were delivered correctly. It then sends a **negative acknowledgement (NACK)** or simply remains silent. The sender then “goes back” and retransmits that frame and all frames after it. This system maintains order while being more efficient than Stop-and-Wait but can waste bandwidth when errors occur 📡.
+**How it Works:**
+- Sender can send up to *N* frames without waiting for ACKs.
+- Receiver only accepts frames in order.
+- If a frame is lost or corrupted, receiver discards it and all subsequent frames.
+- Sender retransmits that frame and all following frames.
+
+**Pros:**
+- Much more efficient than Stop-and-Wait.
+- Channel stays busy.
+
+**Cons:**
+- Wastes bandwidth when one error forces multiple retransmissions.
+- Cannot use out-of-order frames.
+
 
 ### **Mermaid Diagram**
 ```mermaid
@@ -80,7 +104,7 @@ sequenceDiagram
     participant C as Channel
     participant R as Receiver
 
-    Note over S,R: Go-Back-N ARQ (Windowed sending, ordered receiving)
+    Note over S,R: Go-Back-N ARQ (cumulative ACKs, single timer for oldest unacked)
 
     S->>C: F1
     C->>R: F1
@@ -89,50 +113,70 @@ sequenceDiagram
 
     S->>C: F2
     C->>R: F2
+    R-->>C: ACK2
+    C-->>S: ACK2
 
     S->>C: F3
-    C -x R: F3 (Lost)
+    C -x R: F3 (lost)
 
     S->>C: F4
-    C->>R: F4 (Out of order → Discard)
+    C->>R: F4
+    Note over R: Out-of-order (expected=3) → discard F4
+    R-->>C: ACK2
+    C-->>S: ACK2
 
-    R-->>C: ACK1 (cumulative)
-    C-->>S: ACK1
+    Note over S: Timer running for oldest unacked (F3).<br/>On timeout → retransmit from F3.
+    Note right of S: Timeout for F3 occurs
 
-    Note over S: Timeout → Retransmit F3, F4
-    S->>C: F3 (Retransmit)
+    S->>C: F3 (retransmit)
     C->>R: F3
     R-->>C: ACK3
     C-->>S: ACK3
 
-    S->>C: F4
+    S->>C: F4 (retransmit)
     C->>R: F4
     R-->>C: ACK4
     C-->>S: ACK4
+
 ```
-### 📊 Timing Table for Go-Back-N
+### 📊 Timing Table — Go-Back-N ARQ
+
 | Step | Time | Description |
 |------|------|-------------|
-| 1 | 0–5 ms | Sender transmits Frames C1, C2, C3… without waiting 🚀 |
-| 2 | 6 ms | Receiver detects C2 is missing ❌ |
-| 3 | 7 ms | Receiver sends NACK or stays silent ⚠️ |
-| 4 | 10 ms | Sender retransmits **C2, C3, …** in order 🔄 | ARQ
+| 1 | 0–5 ms | 🚀 Sender transmits F1–F4 within its window. |
+| 2 | ~1–3 ms | 📬 Receiver gets **F1**, sends **ACK1** (cumulative). |
+| 3 | ~2–4 ms | 📬 Receiver gets **F2**, sends **ACK2** (next expected = 3). |
+| 4 | ~3–5 ms | ❌ **F3 is lost** in the channel. |
+| 5 | ~4–6 ms | ⚠️ Receiver gets **F4**, but expected F3 → **discard F4**, send **duplicate ACK2**. |
+| 6 | ~6–T<sub>timeout</sub> | 🔁 Sender keeps receiving duplicate ACK2 → knows something is missing but **does NOT retransmit yet**. |
+| 7 | T<sub>timeout</sub> | ⏳ Timeout for **oldest unacked (F3)** → **retransmit F3, F4…** |
+| 8 | After timeout | ✔️ Receiver gets F3 → ACK3, then F4 → ACK4. Normal flow resumes. |
 
-### **Concept Summary**
-- Sender can send **N frames** without waiting (window size = N).
-- Receiver only accepts **in‑order** frames.
-- If a frame is lost/damaged, **receiver discards everything after it**.
-- ACK is cumulative → ACK(k) = "all frames up to k received".
-- If timeout occurs for frame *i*, sender retransmits **frame i and all after it**.
+### 🔑 Important Notes
+> **Textbook Go-Back-N does *not* normally use explicit NACKs.**  
+> When a frame is missing, the receiver sends **duplicate/cumulative ACKs** for the last in-order frame (e.g., ACK2).  
+> The sender detects the loss through **timeout**, not through NACK.
 
 ---
 
 # 3. Selective Repeat
 
-### 📘 Detailed Explanation
-Selective Repeat (Selective Reject) ARQ is a more advanced version of Go-Back-N. Instead of throwing away all frames after a missing one, the receiver accepts **out-of-order frames**, buffers them, and only requests **the specific missing frame**. This dramatically reduces retransmission overhead and improves efficiency, especially on long links or in noisy environments 🌐⚡. However, this method requires more complex buffering and tracking on both sides.
+**Idea:** Only the specific frames that were lost or corrupted are retransmitted.
 
-Selective Repeat (or Selective Reject) ARQ further improves efficiency by letting the receiver **accept and buffer out-of-order frames**. Unlike Go-Back-N, the receiver does *not* discard everything after a lost frame. Instead, only the missing frame is negatively acknowledged, and only that specific frame is retransmitted. This reduces retransmission overhead and maximizes the use of high-bandwidth links. However, it requires more complex buffering on both sender and receiver sides, as they must keep track of which specific frames were acknowledged and which were not 🎯.
+**How it Works:**
+- Sender transmits multiple frames using a sliding window.
+- Receiver accepts out-of-order frames and stores them.
+- Missing frames are explicitly requested again.
+- Sender retransmits only the frames that were lost.
+
+**Pros:**
+- Highly efficient.
+- Minimizes retransmission overhead.
+- Ideal for noisy or high-latency networks.
+
+**Cons:**
+- More complex implementation.
+- Requires out-of-order buffering.
 
 ### **Mermaid Diagram**
 ```mermaid
@@ -140,53 +184,73 @@ sequenceDiagram
     participant S as Sender
     participant C as Channel
     participant R as Receiver
+    participant A as App
 
-    Note over S,R: Selective Repeat ARQ (Individual ACKs, Out‑of‑order accepted)
+    Note over S,R: Selective Repeat ARQ (individual ACKs, out-of-order accepted & buffered)
 
     S->>C: F1
     C->>R: F1
     R-->>C: ACK1
     C-->>S: ACK1
+    C-->>A: deliver F1
 
     S->>C: F2
-    C -x R: F2 (Lost)
+    C -x R: F2 (lost)          
 
     S->>C: F3
-    C->>R: F3 (Stored in buffer)
+    C->>R: F3
+    Note over R: F3 is out-of-order (expecting F2) → buffer F3
     R-->>C: ACK3
     C-->>S: ACK3
 
-    Note over S: Timeout for F2 → Retransmit
-    S->>C: F2 (Retransmit)
-    C->>R: F2 (Delivered)
+    Note over S: Sender has per-frame timers.\\Timer(F2) running.
+    Note right of S: Timeout for F2 occurs
+
+    S->>C: F2 (retransmit)
+    C->>R: F2
     R-->>C: ACK2
     C-->>S: ACK2
+
+    C-->>A: deliver F2
+    C-->>A: deliver F3
+
 ```
 
-### 📊 Timing Table for Selective Repeat
+### 📊 Timing Table — Selective Repeat ARQ
+
 | Step | Time | Description |
 |------|------|-------------|
-| 1 | 0–5 ms | Sender transmits C1, C2, C3, C4… 📤 |
-| 2 | 6 ms | Receiver gets C1, C3, C4 — C2 missing ❗|
-| 3 | 7 ms | Receiver sends NACK for C2 only 🎯 |
-| 4 | 10 ms | Sender retransmits **C2 only** 🔁 |
-| 5 | 12 ms | Receiver reorders C1, C2, C3, C4 ✔️ | ARQ
+| 1 | 0–5 ms | 🚀 Sender transmits F1, F2, F3 (within window). |
+| 2 | ~1–3 ms | 📬 Receiver gets **F1** → ACK1, deliver to app. |
+| 3 | ~2–4 ms | ❌ **F2 is lost** in channel (never reaches R). |
+| 4 | ~3–5 ms | 📬 Receiver gets **F3** → **buffer** F3 (out-of-order), send **ACK3**. |
+| 5 | ~T<sub>F2</sub> | ⏳ Timer for **F2** expires at sender → **retransmit F2 only**. |
+| 6 | after retransmit | ✔️ Receiver gets F2 → ACK2; then deliver F2 and buffered F3 to application. |
 
-### **Concept Summary**
-- Sender and receiver both maintain **sliding windows**.
-- Receiver **accepts out‑of‑order frames**.
-- Only **incorrect/missing** frames are retransmitted.
-- Each frame has its own ACK.
+### 🔑 Important Notes
+- **Selective Repeat uses individual ACKs** and **per-frame timers**; the sender retransmits **only** the missing frame(s).  
+- **NACKs are optional**: some implementations use explicit NACKs, but textbook Selective Repeat commonly relies on ACKs + per-frame timeouts.  
+- Receiver must **buffer** out-of-order frames (up to window size) to later deliver them in order to the application.
 
 ---
 
 # 4. Reject (REJ) ARQ
 
-### **Concept Summary**
-- Variation of Selective Repeat.
-- Receiver sends **REJ(n)** when frame *n* is missing or corrupted.
-- Sender retransmits **only frame n** immediately.
-- Faster than timeout‑based recovery.
+**Idea:** Receiver sends an immediate reject (REJ) message when a frame is detected as erroneous.
+
+**How it Works:**
+- Upon detecting a faulty frame, receiver sends **REJ(i)** indicating which frame needs retransmission.
+- Sender retransmits only that specific frame.
+- Simpler than Selective Repeat but more precise than Go-Back-N.
+
+**Pros:**
+- Fast error notification.
+- Only the incorrect frame is resent.
+
+**Cons:**
+- Requires immediate error detection.
+- Typically does not support out-of-order buffering.
+
 
 ### **Mermaid Diagram**
 ```mermaid
@@ -194,75 +258,67 @@ sequenceDiagram
     participant S as Sender
     participant C as Channel
     participant R as Receiver
+    participant A as App
 
-    Note over S,R: REJ ARQ (Immediate negative acknowledgement)
+    Note over S,R: REJ ARQ (Immediate Negative Acknowledgement for corrupted/missing frames)
 
+    %% Frame 1 normal
     S->>C: F1
     C->>R: F1
     R-->>C: ACK1
     C-->>S: ACK1
+    C-->>A: deliver F1
 
+    %% Frame 2 corrupted
     S->>C: F2
-    C -x R: F2 (Corrupted)
+    C -x R: F2 (corrupted)
     R-->>C: REJ2
     C-->>S: REJ2
 
-    S->>C: F2 (Retransmit)
+    %% Retransmission of Frame 2
+    S->>C: F2 (retransmit)
     C->>R: F2
     R-->>C: ACK2
     C-->>S: ACK2
+    C-->>A: deliver F2
+
 ```
 
----
+### 📊 Timing Table — REJ ARQ
 
-# 5. Sliding Window
-
-### 📘 Detailed Explanation
-Sliding Window is the general mechanism that powers both Go-Back-N and Selective Repeat. The sender maintains a **window** of frames it is allowed to send without waiting for ACKs, while the receiver maintains a window of frames it expects to receive. As ACKs arrive, the sender’s window **slides forward**, enabling continuous transmission and improving efficiency 🚀.
-
-Sliding Window is the generalized mechanism behind Go-Back-N and Selective Repeat. It defines how many frames the sender is allowed to transmit without receiving ACKs (the **window size** 🚪). As ACKs arrive, the sender's window “slides forward,” allowing new frames to enter the pipeline. The receiver also maintains a window of what it is willing to accept. ACKs and NACKs dynamically adjust this window by freeing buffer space or signaling for retransmission. This technique maximizes link utilization and ensures robust flow control across a variety of network conditions.
-
-### **Mermaid Diagram**
-```mermaid
-sequenceDiagram
-    participant S as Sender
-    participant R as Receiver
-
-    Note over S,R: Sliding Window (General Flow‑Control Mechanism)
-
-    S->>R: F1, F2, F3, F4 (Window size = 4)
-    R-->>S: ACK1
-    R-->>S: ACK2
-
-    Note over S: Window slides → Next frames allowed
-    S->>R: F5, F6
-    R-->>S: ACK3
-    R-->>S: ACK4
-
-    Note over S: Window slides again → Additional frames permitted
-```
-
-### 📊 Timing Table for Sliding Window
 | Step | Time | Description |
 |------|------|-------------|
-| 1 | 0–10 ms | Sender transmits full window of frames (W frames) 📤 |
-| 2 | 5–15 ms | Receiver acknowledges frames as they arrive 📨 |
-| 3 | 15 ms | Window slides, freeing spots for more frames ↔️ |
-| 4 | 20+ ms | Lost frames → NACK/timeout → targeted or bulk retransmission 🔄 | Protocol (General Model)
+| 1 | 0–2 ms | 🚀 Sender transmits F1 → Receiver gets F1 → ACK1 → delivered to application. |
+| 2 | 2–4 ms | ❌ F2 is **corrupted** in channel. Receiver immediately sends **REJ2**. |
+| 3 | 4–6 ms | ⏳ Sender receives REJ2 → **retransmits F2**. |
+| 4 | 6–8 ms | ✔️ Receiver gets F2 → ACK2 → delivered to application. |
 
-### **Concept Summary**
-- Sender maintains a window of frames it can transmit without waiting.
-- Receiver maintains a window of acceptable frame sequence numbers.
-- ACKs slide the window forward.
-- Two main variants:
-  - **Go‑Back‑N** (only in‑order acceptance)
-  - **Selective Repeat** (buffer out‑of‑order)
-  
+### 🔑 Important Notes
+- REJ ARQ uses **immediate negative acknowledgements**: the receiver signals **exactly which frame** was missing or corrupted.  
+- The sender **retransmits only the rejected frame**, not all subsequent frames.  
+- Out-of-order frames are **discarded**; buffering is not used in basic REJ ARQ.  
+- Timers are typically **per window**; retransmission occurs **immediately on REJ receipt**.
+
+
 ---
 
+# Sliding Window Mechanism (Underlying Concept)
+**Note:** This is *not* an ARQ protocol, but the mechanism powering:
+- Go-Back-N ARQ
+- Selective Repeat ARQ
 
-📝 **Note:** NPT = Network Propagation Time, representing the delay between Sender → Channel → Receiver and back.
+**Idea:** Allow multiple frames to be sent and acknowledged efficiently using send and receive windows.
 
+**Key Concepts:**
+- Sender maintains a sending window that determines how many frames can be in transit.
+- Receiver maintains a receiving window that defines which frames it can accept.
+- As ACKs arrive, the window slides forward, enabling continuous transmission.
+
+**Why It Matters:**
+- Maximizes link utilization.
+- Reduces idle time.
+- Essential for modern high-speed networks.
+  
 ---
 
 ## 🧠 Final Summary Table
@@ -271,8 +327,12 @@ This comparison table gives you a quick study reference.
 | Protocol | Window Size | Receiver Behavior | Retransmission Strategy | Efficiency | Complexity |
 |----------|-------------|-------------------|--------------------------|------------|------------|
 | 🟦 Stop-and-Wait | 1 frame | Accept only one frame at a time | Resend after timeout | Low | Very Low |
-| 🟩 Go-Back-N | N frames | Accept in order only | Resend from first missing frame onward | Medium | Low–Medium |
-| 🟨 Selective Repeat | N frames | Accept out-of-order & buffer | Resend only missing frames | High | Medium–High |
-| 🟥 Sliding Window | Adaptive | Depends on ARQ variant | Moves window based on ACK/NACK | Very High | Medium–High |
+| 🟩 Go-Back-N | N frames | Accept in-order only; discard out-of-order | Resend from first missing frame onward (cumulative ACKs, timeout) | Medium | Low–Medium |
+| 🟨 Selective Repeat | N frames | Accept out-of-order & buffer | Resend only missing frames (individual ACKs, per-frame timers) | High | Medium–High |
+| 🟥 REJ (Reject) | 1 frame | Accept only in-order; discard out-of-order | Resend rejected frame immediately (upon REJ) | Medium | Low |
+| 🟪 Sliding Window | Adaptive | Depends on ARQ variant | Moves window based on ACK/NACK | Very High | Medium–High |
+
+
+📝 **Note:** NPT = Network Propagation Time, representing the delay between Sender → Channel → Receiver and back.
 
 ---
