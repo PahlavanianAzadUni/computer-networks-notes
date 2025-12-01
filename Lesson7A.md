@@ -172,7 +172,7 @@ Flip bit 3 → syndrome = 3 → fix.
 * Multiple errors may create misleading syndromes → **incorrect corrections possible**.
 
 ---
-## 🔍 5. Check your notes on the homescreen CRC (Cyclic Redundancy Check) —
+## 🔍 5. CRC (Cyclic Redundancy Check) —
 
 
 
@@ -428,16 +428,6 @@ Bits become `00000000001110`.
 
 No more positions to XOR where a full divisor fits — the **remainder** is the last 4 bits (degree of divisor = 4): `1110`.
 
-
-
-**So remainder **``**.**
-
-
-
-**Transmitted codeword = original data + remainder = **``** → **``**.**
-
-
-
 ---
 
 
@@ -458,7 +448,7 @@ No more positions to XOR where a full divisor fits — the **remainder** is the 
 
 
 
-**Important note (clarifying confusion from class):** CRC is a **detector**, not a corrector. Standard CRC will not tell you which bit flipped; it only tells you that the received frame is invalid. After detection, typical protocols either request retransmission (ARQ) or drop the frame.
+**Important note :** CRC is a **detector**, not a corrector. Standard CRC will not tell you which bit flipped; it only tells you that the received frame is invalid. After detection, typical protocols either request retransmission (ARQ) or drop the frame.
 
 
 
