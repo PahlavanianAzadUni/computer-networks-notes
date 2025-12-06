@@ -332,7 +332,8 @@ This comparison table gives you a quick study reference.
 | 🟥 REJ (Reject) | 1 frame | Accept only in-order; discard out-of-order | Resend rejected frame immediately (upon REJ) | Medium | Low |
 | 🟪 Sliding Window | Adaptive | Depends on ARQ variant | Moves window based on ACK/NACK | Very High | Medium–High |
 
-
-📝 **Note:** NPT = Network Propagation Time, representing the delay between Sender → Channel → Receiver and back.
-
+---
+📝 **Note:** 
+- NPT = Network Propagation Time, representing the delay between Sender → Channel → Receiver and back.
+- ARQ = Automatic repeat request (ARQ), also known as automatic repeat query, is an error-control method for data transmission that uses acknowledgements (messages sent by the receiver indicating that it has correctly received a message) and timeouts (specified periods of time allowed to elapse before an acknowledgment is to be received).
 ---
