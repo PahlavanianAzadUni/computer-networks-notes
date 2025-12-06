@@ -67,6 +67,25 @@ Each station maintains two counters:
 
 ---
 
+### 🔥 RQ vs CD — Key Differences (Real-World Analogy Summary)
+
+#### 🔹 **RQ = Dynamic**
+- Represents how many people **behind you** want a seat.
+- Changes constantly:
+  - Someone raises their hand → **RQ++**
+  - Someone behind you gets a seat → **RQ--**
+- You don’t control RQ; it updates based on what others do.
+
+#### 🔹 **CD = Fixed**
+- When you decide to sit, you look behind **once** and set:  
+  **CD = number of people behind you currently waiting (RQ).**
+- After that, **CD never changes** even if RQ changes.
+- **Why?** Fairness depends on when you joined the queue, not new people behind you.
+- More hands raised? People leave? RQ jumps around?  
+  → **CD stays the same.**
+- CD only counts down as **empty seats pass**.
+---
+
 ### 🧱 Cell Structure
 
 Each **DQDB cell** is divided into two main parts:
